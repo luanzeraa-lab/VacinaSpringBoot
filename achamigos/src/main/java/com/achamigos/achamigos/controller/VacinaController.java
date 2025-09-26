@@ -35,7 +35,7 @@ public class VacinaController {
     }
 
     @GetMapping("/{id}")
-    public Vacina buscarPorodigo(@PathVariable("id") String codVacina) {
+    public Vacina buscarPorCodigo(@PathVariable("id") String codVacina) {
 
         return vacinaService.buscarPorCodigo(codVacina);
     }
