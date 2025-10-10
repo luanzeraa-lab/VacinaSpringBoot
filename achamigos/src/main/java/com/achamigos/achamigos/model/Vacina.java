@@ -12,46 +12,44 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Document(collection = "vacinas")
 public class Vacina {
-    
+
     @Id
+    private String id; // ID do MongoDB (ObjectId)
     private String codVacina;
     private String idUsuario;
     private String nome;
     private String duracao;
-    private String animalId;
+    private String animalId; // ID do Animal
 
-    public String getCodVacina() {
-        return codVacina;
+
+
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+
+    public String getDuracao() { return duracao; }
+    public void setDuracao(String duracao) { this.duracao = duracao; }
+
+    public String getCodVacina() { return codVacina; }
+    public void setCodVacina(String codVacina) { this.codVacina = codVacina; }
+
+    public String getIdUsuario() { return idUsuario; }
+    public void setIdUsuario(String idUsuario) { this.idUsuario = idUsuario; }
+
+
+    public String getId() {
+        return id;
     }
 
-    public void setCodVacina(String codVacina) {
-        this.codVacina = codVacina;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getIdUsuario() {
-        return idUsuario;
+
+    public String getAnimalId() {
+        return animalId;
     }
 
-    public void setIdUsuario(String idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setAnimalId(String animalId) {
+        this.animalId = animalId;
     }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDuracao() {
-        return duracao;
-    }
-
-    public void setDuracao(String duracao) {
-        this.duracao = duracao;
-    }
-    
-    
-    
 }
