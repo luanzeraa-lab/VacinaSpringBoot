@@ -4,7 +4,7 @@ import com.achamigos.achamigos.model.Vacina;
 import com.achamigos.achamigos.service.VacinaService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-//comentario aleatorio
+
 @RestController
 @RequestMapping("/api/vacinas")
 @CrossOrigin(origins = "*")
