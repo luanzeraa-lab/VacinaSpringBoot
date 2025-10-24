@@ -1,18 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.achamigos.achamigos.service;
+
 import com.achamigos.achamigos.model.Vacina;
 import com.achamigos.achamigos.repository.VacinaRepository;
-import org.springframework.stereotype.Service;
 import com.achamigos.achamigos.exception.ResourceNotFoundException;
+import org.springframework.stereotype.Service;
 import java.util.List;
 
-/**
- *
- * @author Alunos
- */
 @Service
 public class VacinaService {
 
@@ -23,6 +16,8 @@ public class VacinaService {
     }
 
     public Vacina cadastrarVacina(Vacina vacina) {
+        vacinaRepository.findByCodVacina(vacina.getCodVacina())
+                .ifPresent(v -> { throw new ResourceNotFoundException("Código de vacina já cadastrado."); });
         return vacinaRepository.save(vacina);
     }
 
@@ -34,28 +29,27 @@ public class VacinaService {
         return vacinaRepository.findByAnimalId(animalId);
     }
 
-    public Vacina buscarPorCodigo(String codVacina){
+    public Vacina buscarPorCodigo(String codVacina) {
         return vacinaRepository.findByCodVacina(codVacina)
                 .orElseThrow(() -> new ResourceNotFoundException("Vacina não encontrada com código: " + codVacina));
     }
-    public Vacina buscarPorId(String id){
+
+    public Vacina buscarPorId(String id) {
         return vacinaRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Vacina não encontrada com código: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Vacina não encontrada com ID: " + id));
     }
 
-    public Vacina atualizarVacina(String codVacina, Vacina vacinaAtualizada) {
-        Vacina vacina = buscarPorCodigo(codVacina);
-
+    public Vacina atualizarVacina(String id, Vacina vacinaAtualizada) {
+        Vacina vacina = buscarPorId(id);
         vacina.setNome(vacinaAtualizada.getNome());
         vacina.setDuracao(vacinaAtualizada.getDuracao());
-
+        vacina.setCodVacina(vacinaAtualizada.getCodVacina());
+        vacina.setAnimalId(vacinaAtualizada.getAnimalId());
         return vacinaRepository.save(vacina);
     }
 
-    public void deletarVacina(String codVacina) {
-        Vacina vacina = buscarPorCodigo(codVacina);
+    public void deletarVacina(String id) {
+        Vacina vacina = buscarPorId(id);
         vacinaRepository.delete(vacina);
     }
 }
-
-

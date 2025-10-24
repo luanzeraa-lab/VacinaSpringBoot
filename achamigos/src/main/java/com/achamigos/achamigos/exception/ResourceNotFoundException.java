@@ -4,14 +4,8 @@
  */
 package com.achamigos.achamigos.exception;
 
-/**
- *
- * @author Alunos
- */
-    public class ResourceNotFoundException extends RuntimeException {
-
-        public ResourceNotFoundException(String message) {
-            super(message);
-        }
+public class ResourceNotFoundException extends RuntimeException {
+    public ResourceNotFoundException(String message) {
+        super(message);
     }
-
+}
