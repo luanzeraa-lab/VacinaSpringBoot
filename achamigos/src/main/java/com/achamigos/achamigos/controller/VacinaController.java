@@ -26,20 +26,11 @@ public class VacinaController {
         return vacinaService.listarTodas();
     }
 
-    @GetMapping("codigo/{codVacina}")
-    public Vacina buscarPorCodigo(@PathVariable("codVacina") String codVacina) {
-        return vacinaService.buscarPorCodigo(codVacina);
-    }
-
     @GetMapping("/{id}")
     public Vacina buscarPorId(@PathVariable("id") String id) {
         return vacinaService.buscarPorId(id);
     }
 
-    @GetMapping("/animal/{animalId}")
-    public List<Vacina> buscarPorAnimal(@PathVariable String animalId) {
-        return vacinaService.buscarPorAnimal(animalId);
-    }
 
     @PutMapping("/{id}")
     public Vacina atualizar(@PathVariable("id") String id, @RequestBody Vacina vacina) {

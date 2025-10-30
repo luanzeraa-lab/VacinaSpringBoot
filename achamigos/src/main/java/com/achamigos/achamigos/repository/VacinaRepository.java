@@ -9,3 +9,4 @@ public interface VacinaRepository extends MongoRepository<Vacina, String> {
     Optional<Vacina> findByCodVacina(String codVacina);
     List<Vacina> findByAnimalId(String animalId);
 }
+

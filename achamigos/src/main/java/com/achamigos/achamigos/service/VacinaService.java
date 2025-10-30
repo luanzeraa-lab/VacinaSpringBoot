@@ -1,5 +1,5 @@
 package com.achamigos.achamigos.service;
-//cometario
+
 import com.achamigos.achamigos.model.Vacina;
 import com.achamigos.achamigos.repository.VacinaRepository;
 import com.achamigos.achamigos.exception.ResourceNotFoundException;
@@ -16,7 +16,7 @@ public class VacinaService {
     }
 
     public Vacina cadastrarVacina(Vacina vacina) {
-        vacinaRepository.findByCodVacina(vacina.getCodVacina())
+        vacinaRepository.findByCodVacina(vacina.getId())
                 .ifPresent(v -> { throw new ResourceNotFoundException("Código de vacina já cadastrado."); });
         return vacinaRepository.save(vacina);
     }
@@ -25,14 +25,6 @@ public class VacinaService {
         return vacinaRepository.findAll();
     }
 
-    public List<Vacina> buscarPorAnimal(String animalId) {
-        return vacinaRepository.findByAnimalId(animalId);
-    }
-
-    public Vacina buscarPorCodigo(String codVacina) {
-        return vacinaRepository.findByCodVacina(codVacina)
-                .orElseThrow(() -> new ResourceNotFoundException("Vacina não encontrada com código: " + codVacina));
-    }
 
     public Vacina buscarPorId(String id) {
         return vacinaRepository.findById(id)
@@ -42,9 +34,6 @@ public class VacinaService {
     public Vacina atualizarVacina(String id, Vacina vacinaAtualizada) {
         Vacina vacina = buscarPorId(id);
         vacina.setNome(vacinaAtualizada.getNome());
-        vacina.setDuracao(vacinaAtualizada.getDuracao());
-        vacina.setCodVacina(vacinaAtualizada.getCodVacina());
-        vacina.setAnimalId(vacinaAtualizada.getAnimalId());
         return vacinaRepository.save(vacina);
     }
 
