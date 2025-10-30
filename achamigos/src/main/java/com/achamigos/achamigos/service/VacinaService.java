@@ -16,7 +16,7 @@ public class VacinaService {
     }
 
     public Vacina cadastrarVacina(Vacina vacina) {
-        vacinaRepository.findByCodVacina(vacina.getId())
+        vacinaRepository.findById(vacina.getId())
                 .ifPresent(v -> { throw new ResourceNotFoundException("Código de vacina já cadastrado."); });
         return vacinaRepository.save(vacina);
     }

@@ -33,15 +33,9 @@ public class VacinacaoService {
             Map<String, Object> item = new HashMap<>();
             item.put("id", v.getId());
             item.put("dataAplicacao", v.getDataAplicacao());
+            item.put("animalId", v.getAnimalId());
+            item.put("vacinaId", v.getVacinaId());
 
-            Query query = new Query(Criteria.where("_id").is(v.getAnimalId()));
-            Map<String, Object> animal = mongoTemplate.findOne(query, Map.class, "animais");
-
-            vacinaRepository.findById(v.getVacinaId()).ifPresent(vc ->
-                    item.put("vacina", vc)
-            );
-
-            item.put("animal", animal);
             resultado.add(item);
         }
 
