@@ -29,4 +29,9 @@ public class VacinacaoController {
     public void deletar(@PathVariable String id) {
         vacinacaoService.deletar(id);
     }
+
+    @PostMapping("/gerar/{animalId}")
+    public List<Vacinacao> gerarPorAnimal(@PathVariable String animalId) {
+        return vacinacaoService.gerarPorAnimal(animalId);
+    }
 }

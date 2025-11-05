@@ -12,6 +12,8 @@ public class Vacinacao {
     private String id;
     private String animalId;
     private String vacinaId;
+    private String animalNome;
+    private String vacinaNome;
     private LocalDate dataAplicacao;
 
 
@@ -23,6 +25,12 @@ public class Vacinacao {
 
     public String getVacinaId() { return vacinaId; }
     public void setVacinaId(String vacinaId) { this.vacinaId = vacinaId; }
+
+    public String getAnimalNome() { return animalNome; }
+    public void setAnimalNome(String animalNome) { this.animalNome = animalNome; }
+
+    public String getVacinaNome() { return vacinaNome; }
+    public void setVacinaNome(String vacinaNome) { this.vacinaNome = vacinaNome; }
 
     public LocalDate getDataAplicacao() { return dataAplicacao; }
     public void setDataAplicacao(LocalDate dataAplicacao) { this.dataAplicacao = dataAplicacao; }
