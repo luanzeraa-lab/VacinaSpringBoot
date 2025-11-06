@@ -54,7 +54,7 @@ public class VacinacaoService {
     }
 
     @Autowired
-    private AnimalRepository animalRepository;
+    private AnimalRepository animalRepository; // seu repositório do Animal
 
     public List<Vacinacao> gerarPorAnimal(String animalId) {
         Optional<Animal> optionalAnimal = animalRepository.findById(animalId);
@@ -65,7 +65,7 @@ public class VacinacaoService {
 
         Animal animal = optionalAnimal.get();
         String animalNome = animal.getNome();
-        List<Vacina> vacinas = animal.getVacinas();
+        List<Vacina> vacinas = animal.getVacinas(); // agora é lista de objetos Vacina
 
         List<Vacinacao> vacinacoesCriadas = new ArrayList<>();
 
@@ -77,7 +77,7 @@ public class VacinacaoService {
             Vacinacao nova = new Vacinacao();
             nova.setAnimalId(animalId);
             nova.setAnimalNome(animalNome);
-            nova.setVacinaId(vacina.getId());
+            nova.setVacinaId(vacina.getId()); // pega o id correto direto do objeto
             nova.setVacinaNome(vacina.getNome());
             nova.setDataAplicacao(LocalDate.now());
 
