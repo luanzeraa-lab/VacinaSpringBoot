@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -33,14 +32,10 @@ public class VacinacaoController {
         vacinacaoService.deletar(id);
     }
 
+    // Gera vacinação para todas as vacinas do animal do Mongo
     @PostMapping("/gerar/{animalId}")
-    public List<Vacinacao> gerarPorAnimal(@PathVariable String animalId) {
-        return vacinacaoService.gerarPorAnimal(animalId);
-    }
-
-    @PostMapping("/vacinacoes")
-    public ResponseEntity<Vacinacao> criarVacina(@RequestBody Vacinacao vacinacao) {
-        Vacinacao saved = vacinacaoService.salvar(vacinacao);
-        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+    public ResponseEntity<List<Vacinacao>> gerarPorAnimal(@PathVariable String animalId) {
+        List<Vacinacao> vacinacoes = vacinacaoService.gerarPorAnimal(animalId);
+        return ResponseEntity.status(HttpStatus.CREATED).body(vacinacoes);
     }
 }
