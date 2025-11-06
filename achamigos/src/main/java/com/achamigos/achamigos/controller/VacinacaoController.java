@@ -32,7 +32,7 @@ public class VacinacaoController {
         vacinacaoService.deletar(id);
     }
 
-    // Gera vacinação para todas as vacinas do animal do Mongo
+
     @PostMapping("/gerar/{animalId}")
     public ResponseEntity<List<Vacinacao>> gerarPorAnimal(@PathVariable String animalId) {
         List<Vacinacao> vacinacoes = vacinacaoService.gerarPorAnimal(animalId);

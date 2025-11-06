@@ -21,7 +21,6 @@ public class VacinacaoService {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    // Lista todas as vacinações
     public List<Map<String, Object>> listarTodas() {
         List<Vacinacao> vacinacoes = vacinacaoRepository.findAll();
         List<Map<String, Object>> resultado = new ArrayList<>();
@@ -40,22 +39,19 @@ public class VacinacaoService {
         return resultado;
     }
 
-    // Salvar vacinação manualmente
+
     public Vacinacao salvar(Vacinacao vacinacao) {
         return vacinacaoRepository.save(vacinacao);
     }
 
-    // Deletar vacinação
+
     public void deletar(String id) {
         vacinacaoRepository.deleteById(id);
     }
 
-    /**
-     * Gera automaticamente as vacinações com base nos dados do animal
-     * buscado diretamente da coleção 'animals' do MongoDB.
-     */
+
     public List<Vacinacao> gerarPorAnimal(String animalId) {
-        // Busca o documento do animal diretamente da coleção 'animals'
+
         Query query = new Query(Criteria.where("_id").is(animalId));
         Document animalDoc = mongoTemplate.findOne(query, Document.class, "animals");
 
@@ -72,7 +68,7 @@ public class VacinacaoService {
             return vacinacoesGeradas;
         }
 
-        // Cria um documento de vacinação para cada vacina
+
         for (Document vacina : vacinas) {
             Vacinacao nova = new Vacinacao();
             nova.setAnimalId(animalId);
