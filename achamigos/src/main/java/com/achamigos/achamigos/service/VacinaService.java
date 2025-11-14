@@ -36,6 +36,7 @@ public class VacinaService {
     public Vacina atualizarVacina(String id, Vacina vacinaAtualizada) {
         Vacina vacina = buscarPorId(id);
         vacina.setNome(vacinaAtualizada.getNome());
+        vacina.setValidade(vacinaAtualizada.getValidade());
         return vacinaRepository.save(vacina);
     }
 
