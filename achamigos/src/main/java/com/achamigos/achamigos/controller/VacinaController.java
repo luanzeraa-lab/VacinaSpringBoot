@@ -7,7 +7,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/vacinas")
-@CrossOrigin(origins = "*")
+@CrossOrigin(
+    origins = {
+        "http://localhost:3000",
+        "https://achamigos-full-stack-p6dr.onrender.com"
+    },
+    allowedHeaders = "*",
+    methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS}
+)
 public class VacinaController {
 
     private final VacinaService vacinaService;
