@@ -10,9 +10,16 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/vacinacao")
+    @CrossOrigin(
+    origins = {
+        "http://localhost:3000",
+        "https://achamigos-full-stack-p6dr.onrender.com"
+    },
+    allowedHeaders = "*",
+    methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS}
+)
 public class VacinacaoController {
 
     @Autowired
